@@ -7,16 +7,13 @@
 
 #include <iostream>
 #include <iomanip>
+#include <iterator>
 #include <vector>
 
 int main() {
 
-    // input hourly rainfall rate
-    std::vector<double> rainfall;
-    double n;
-    while (std::cin >> n) {
-        rainfall.push_back(n);
-    }
+    // input hourly rainfall data
+    const std::vector<double> rainfall{ std::istream_iterator<double>(std::cin), std::istream_iterator<double>() };
     if (!rainfall.size()) {
         std::cerr << "Error: no rainfall data\n";
         return 1;
